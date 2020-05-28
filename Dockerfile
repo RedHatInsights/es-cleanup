@@ -1,6 +1,5 @@
-FROM python:3 
+FROM docker.io/centos/python-36-centos7
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt 
-RUN chmod +x delete-indices.py
 CMD ["./delete-indices.py"]
