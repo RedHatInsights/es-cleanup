@@ -20,17 +20,23 @@ import requests
 import os
 
 hostname = os.environ['ES_HOSTNAME']
+index_delted = "index_not_found_exception"
 
 today = date.today()
-# Note: 05.19 is the last day with data, so June 2nd is our first available window
+# Note: 05.19 is the last day with data, so 06.02 is our first available window
 two_weeks_ago = today + timedelta(days=-14)
 
 index_name = "cwl-%s" % two_weeks_ago.strftime("%Y.%m.%d")
-print(f"https://{hostname}/{index_name}")
+print(f"Processing delete for https://{hostname}/{index_name}")
 r = requests.delete(f"https://{hostname}/{index_name}")
+
+response_body = r.json()
 if r.status_code == 200:
     print(f"Deleted index {index_name}")
-else:
-    response_body = r.json()
+elif r.status_code == 404: 
     root_cause = response_body["error"]["root_cause"][0]
-    raise ValueError("Bad response code: {}, failure type '{}' with reason '{}'".format(r.status_code, root_cause["type"], root_cause["reason"])) 
+    if root_cause["type"] == index_delted:
+        print(f"Index {index_name} is already deleted")
+else:
+    raise ValueError("Unexpected response code: {}".format(r.status_code)) 
+    
