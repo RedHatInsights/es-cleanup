@@ -59,3 +59,4 @@ parameters:
   name: IMAGE_TAG
   value: 4dd1da966d09
   required: true
+  
