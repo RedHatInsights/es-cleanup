@@ -23,7 +23,7 @@ hostname = os.environ['ES_HOSTNAME']
 index_delted = "index_not_found_exception"
 
 today = date.today()
-#  Note: 05.19 is the last day with data, so 06.02 is our first available window
+# Note: 05.19 is the last day with data, so 06.02 is our first available window
 two_weeks_ago = today + timedelta(days=-14)
 
 index_name = "cwl-%s" % two_weeks_ago.strftime("%Y.%m.%d")

@@ -30,7 +30,7 @@ objects:
               env:
               - name: ES_HOSTNAME
                 valueFrom:
-                   secretKeyRef:
+                  secretKeyRef:
                       key: hostname 
                       name: es-cleanup-secret
               name: es-cleanup 
@@ -51,3 +51,10 @@ objects:
     schedule: "0 0 * * *"
     successfulJobsHistoryLimit: 2
     suspend: false
+parameters:
+- description: Image
+  name: IMAGE
+  required: true
+- description: Image tag
+  name: IMAGE_TAG
+  required: true
