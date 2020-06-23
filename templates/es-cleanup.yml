@@ -24,7 +24,7 @@ objects:
             - command:
               - python
               - delete-indices.py
-              image: ${IMAGE}:${IMAGE_TAG}
+              image: quay.io/cloudservices/es-cleanup:${IMAGE_TAG}
               imagePullPolicy: Always 
               env:
               - name: ES_HOSTNAME
@@ -51,11 +51,6 @@ objects:
     successfulJobsHistoryLimit: 2
     suspend: false
 parameters:
-- description: Image
-  name: IMAGE
-  value: quay.io/cloudservices/es-cleanup
-  required: true
 - description: Image tag
   name: IMAGE_TAG
-  value: 5ac4f404c8a2
   required: true
