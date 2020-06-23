@@ -57,6 +57,5 @@ parameters:
   required: true
 - description: Image tag
   name: IMAGE_TAG
-  value: 4dd1da966d09
+  value: 5ac4f404c8a2
   required: true
-  
