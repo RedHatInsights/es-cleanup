@@ -20,11 +20,12 @@ objects:
           spec:
             imagePullSecrets:
             - name: quay-cloudservices-pull
+            - name: rh-registry-pull
             containers:
             - command:
               - python
               - delete-indices.py
-              image: quay.io/cloudservices/es-cleanup:${IMAGE_TAG}
+              image: ${IMAGE}:${IMAGE_TAG}
               imagePullPolicy: Always 
               env:
               - name: ES_HOSTNAME
@@ -51,6 +52,9 @@ objects:
     successfulJobsHistoryLimit: 2
     suspend: false
 parameters:
+- description: Image name
+  name: IMAGE
+  value: quay.io/cloudservices/es-cleanup
 - description: Image tag
   name: IMAGE_TAG
-  required: true
+  value: 5ac4f404c8a2 
