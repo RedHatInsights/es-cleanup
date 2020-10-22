@@ -33,6 +33,8 @@ objects:
                   secretKeyRef:
                       key: hostname 
                       name: es-cleanup-secret
+              - name: SRE_MANAGED 
+                value: ${SRE_MANAGED}
               name: es-cleanup 
               resources: 
                 requests:
@@ -58,3 +60,6 @@ parameters:
 - description: Image tag
   name: IMAGE_TAG
   value: 5ac4f404c8a2 
+- description: Managed by SRE
+  name: SRE_MANAGED
+  value: "False"
