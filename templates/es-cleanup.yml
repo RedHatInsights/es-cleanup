@@ -35,6 +35,8 @@ objects:
                       name: es-cleanup-secret
               - name: SRE_MANAGED 
                 value: ${SRE_MANAGED}
+              - name: ENV
+                value: ${ENV}
               name: es-cleanup 
               resources: 
                 requests:
@@ -63,3 +65,6 @@ parameters:
 - description: Managed by SRE
   name: SRE_MANAGED
   value: "False"
+- description: env to separated retention_days
+  name: ENV
+  value: prod
