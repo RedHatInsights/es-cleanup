@@ -23,7 +23,7 @@ import os
 hostname = os.environ['ES_HOSTNAME']
 sre_managed = os.environ['SRE_MANAGED']
 index_deleted = "index_not_found_exception"
-retention_days = os.environ['RET_DAYS']
+retention_days = int(os.environ['RET_DAYS'])
     
 today = date.today()
 # Note: 05.19 is the last day with data, so 06.02 is our first available window
