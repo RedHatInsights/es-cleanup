@@ -23,13 +23,14 @@ import os
 hostname = os.environ['ES_HOSTNAME']
 sre_managed = os.environ['SRE_MANAGED']
 index_deleted = "index_not_found_exception"
-
+retention_days = os.environ['RET_DAYS']
+    
 today = date.today()
 # Note: 05.19 is the last day with data, so 06.02 is our first available window
-two_weeks_ago = today + timedelta(days=-14)
+deletable_indices = today - timedelta(days=retention_days)
 
 index_name = ""
-date_string = two_weeks_ago.strftime("%Y.%m.%d")
+date_string = deletable_indices.strftime("%Y.%m.%d")
 
 # Loaded in from the deploy template. True is a string and not a boolean value
 if sre_managed == "True":
