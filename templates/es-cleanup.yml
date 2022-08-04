@@ -67,4 +67,4 @@ parameters:
   value: "False"
 - description: env to separated retention_days
   name: RET_DAYS
-  value: 14
+  value: '14'
