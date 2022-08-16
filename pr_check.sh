@@ -1,3 +1,4 @@
+#! /bin/bash
 # --------------------------------------------
 # Options that must be configured by app owner
 # --------------------------------------------
@@ -11,8 +12,6 @@ IQE_FILTER_EXPRESSION=""
 
 # Install bonfire repo/initialize
 CICD_URL=https://raw.githubusercontent.com/RedHatInsights/bonfire/master/cicd
+echo $CICD_URL
 curl -s $CICD_URL/bootstrap.sh > .cicd_bootstrap.sh && source .cicd_bootstrap.sh
-
 source $CICD_ROOT/build.sh
-source $CICD_ROOT/deploy_ephemeral_env.sh
-source $CICD_ROOT/post_test_results.sh
