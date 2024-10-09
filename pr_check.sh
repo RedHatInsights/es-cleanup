@@ -15,7 +15,6 @@ CICD_URL_SCRIPT=https://raw.githubusercontent.com/RedHatInsights/cicd-tools/main
 curl -sL "$CICD_URL_SCRIPT" > .cicd_bootstrap.sh && source .cicd_bootstrap.sh
 source $CICD_ROOT/build.sh
 
-mkdir artifacts
 cat << EOF > artifacts/junit-dummy.xml
 <testsuite tests="1">
     <testcase classname="dummy" name="dummytest"/>
